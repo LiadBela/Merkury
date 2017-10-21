@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,600');
+@import '../styles/colors';
+
+@import '../styles/colors';
+
+
+// Sidenav styling
+md-sidenav{
+  width: 200px;
+  background: $sidenav-bg;
+  color: $default-light;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+}
+
+.sidenav-header {
+  background: $sidenav-bg;
+  border-bottom: 0.5px solid $sidenav-seperator;
+  margin: 0;
+}
+
+.sidenav-header-logo {
+  height: 35px;
+  width: 35px;
+  margin-right: 0.5rem;
+}
+
+.sidenav-header-title {
+  font-weight: 500;
+  color: $default-light;
+  font-size: 1.6rem;
+}
+
+md-nav-list {
+  margin: 0;
+  padding: 0;
+}
+
+.side-nav-list-item {
+  color: $default-light;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-bottom: 1px solid $sidenav-seperator;
+  padding: 0.25rem;
+}
+
+.side-nav-list-item:hover {
+  background: $selected-sidenav-list-item-bg;
+  box-shadow: inset 6px 0px 0px 0px $button-color;
+}
+
+.sidenav-list-icon {
+  width: 15px;
+  height: auto;
+  margin-right: 0.75rem;
+  margin-left: 0.25rem;
+}
+
+// Header styling
+.header-container {
+  background-color: $component-bg;
+  border-bottom: 1px solid $component-border;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.menu-icon-ext {
+  color: $button-color;
+  margin-right: 0px;
+}
+
+.header-icon {
+  color: $icon-color;
+  font-weight: 500;
+}
+
+.header-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header-button-chip
+{
+  font-weight: 500;
+  color: $default-light;
+  margin-right: 1rem;
+  background: $button-color;
+}
+
+.header-avatar {
+  background-image: url('../assets/avatars/homer.jpg');
+  background-size: cover;
+  margin-left: 1rem;
+}
+
+// Greeting with username
+.greet {
+    display: block;
+    margin-left: 0.75rem;
+    font-weight: 500;
+}
+
+// Page container styling
+.home-container {
+  margin: 0.75rem;
+}
+
+// General graphs styling
+.graph-item-title {
+  font-weight: 500;
+  color: $secondary-text-color;
+  white-space: nowrap;
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+
+}
+
+.dropdown-chip {
+  align-items: center;
+  background: $component-bg;
+  border: 1px solid $dropdown-chip-border;
+  font-weight: 500;
+  width: 175px;
+}
+
+.dropdown-chip-arrow {
+  color: $secondary-text-color;
+}
+
+.dropdown-chip-title {
+  color: $secondary-text-color;
+}
+
+// Sales card styling
+.sales-graph {
+  min-width: 175px;
+  width: 100%;
+  height: auto;
+}
+
+.sales-item {
+  flex: 1 1 auto;
+  border: 1px solid $component-border;
+  margin: 0.75rem;
+}
+
+// Sales card styling
+.report-graph {
+  min-width: 175px;
+  width: 100%;
+  height: auto;
+}
+
+.report-item {
+  flex: 2 1 auto;
+  border: 1px solid $component-border;
+  margin: 0.75rem;
+  font-weight: 600;
+  color: $secondary-text-color;
+}
+
+// General list styling
+.home-list {
+  flex: 1 1 33%;
+  margin: 0.75rem;
+  background: $component-bg;
+  border: 1px solid $component-border;
+}
+
+.home-list-subheader {
+  align-items: center;
+  padding: 2rem 0 2rem 1.5rem;
+}
+
+.home-list-subheader-title {
+  color: $primary-text-color;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+// Letter avatar styling (Task list)
+.letter-avatar {
+  color: $default-light;
+  font-size: 1.2rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.list-letter-avatar {
+  @extend .letter-avatar;
+  background: $button-color;
+}
+
+// General list styling
+.list-item {
+  padding: 0.75rem 0.5rem 0.75rem 0.5rem;
+}
+
+.list-detail-icon {
+  margin-right: 0.35rem;
+}
+
+.list-item-text {
+  margin-left: 1rem;
+}
+
+.task-list-item-desc {
+  color: $primary-text-color;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: block;
+}
+
+.list-item-content-title {
+  color: $primary-text-color;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.list-item-content-comment {
+  font-size: 0.7rem;
+  color: $secondary-text-color;
+}
+
+.default-list-icon {
+  color: $secondary-text-color;
+}
+
+// Task list styling
+.task-list-item-due-date-past {
+  @extend .list-item-time-comment;
+  color: $task-list-secondary;
+}
+
+.task-list-item-due-date-valid {
+  @extend .list-item-time-comment;
+  color: $secondary-text-color;
+}
+
+.list-item-time-comment {
+  font-size: 0.7rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  margin-top: 0.35rem;
+}
+
+.list-letter-avatar-delay {
+  @extend .letter-avatar;
+  background: $task-list-secondary;
+  margin-left: 0.5rem;
+}
+
+.message-list-name {
+  @extend .list-item-content-title;
+}
+
+// Messages styling
+.new-message {
+  background: $new-list-item-bg;
+}
+
+.message-list-time {
+  @extend .list-item-content-comment;
+}
+
+.message-list-content {
+  font-size: 0.7rem;
+  color: $primary-text-color;
+  display: block;
+}
+
+.message-list-icons {
+  display: flex;
+  align-items: center;
+  margin-top: 0.35rem;
+  color: $secondary-text-color;
+}
+
+// Activity styling
+.activity-list-name {
+  @extend .list-item-content-title;
+}
+
+.activity-list-comment {
+  @extend .list-item-content-comment;
+}
+
+.activity-list-time-comment {
+  @extend .list-item-time-comment;
+  color: $secondary-text-color;
+}

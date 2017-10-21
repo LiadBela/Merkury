@@ -1,20 +1,224 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<!--
+  All the application is in the side-nav-cintainer, which divides to menu and
+  content
+-->
+<md-sidenav-container>
+  <!-- Sidenav -->
+  <md-sidenav #sidenav class="" mode="side" [opened]=isOpen fxLayout="column">
 
+    <md-toolbar class="sidenav-header">
+      <img src="../assets/logo/logo-big.png" class="sidenav-header-logo"/>
+      <span class="sidenav-header-title">Merkury</span>
+    </md-toolbar>
+
+    <md-nav-list>
+      <a md-list-item class="side-nav-list-item" href="#" *ngFor="let sidenavItem of sidenavItems">
+        <img src="{{sidenavItem.icon}}" class="sidenav-list-icon" />
+        <span>{{sidenavItem.name}}</span>
+      </a>
+    </md-nav-list>
+
+  </md-sidenav>
+
+  <!-- Main content (toolbar + page content) -->
+  <div fxLayout="column">
+
+    <!-- Toolbar section, divided to 'left' and 'right' sections -->
+    <md-toolbar fxLayout="column" class="header-container">
+      <div class="header-left" fxFlex>
+        <button md-icon-button (click)="toggleSidenav()">
+          <i class="fa fa-caret-left menu-icon-ext" aria-hidden="true"></i>
+          <i class="material-icons header-icon">menu</i>
+        </button>
+        <button md-icon-button>
+          <i class="material-icons header-icon">search</i>
+        </button>
+      </div>
+      <div fxHide.gt-xs>
+        <button md-icon-button>
+          <i class="material-icons header-icon">more_vert</i>
+        </button>
+      </div>
+      <div class="header-right" fxHide.xs>
+        <div class="mat-chip header-button-chip">+ Add project</div>
+        <button md-icon-button>
+          <i class="material-icons header-icon">email</i>
+        </button>
+        <button md-icon-button>
+          <i class="material-icons header-icon">notifications</i>
+        </button>
+        <div md-card-avatar class="header-avatar"></div>
+        <md-icon style="margin-left: 0px;">arrow_drop_down</md-icon>
+      </div>
+    </md-toolbar>
+
+    <!--
+      Here starts the specific page (Home in this case), in real application,
+      there will be routing and every page content will enter the following
+      <div>
+    -->
+    <div class="home-container">
+
+      <h1 class="greet">Hello John!</h1>
+
+      <!--
+        Graphs container, contains sales and report graghs, though I didnt have
+        to, I decided to partially implemet (except for graph) for visibility
+      -->
+      <div class="graphs-container" fxLayout="row" fxLayout.lt-md="column">
+        <md-card class="sales-item mat-elevation-z0">
+
+          <!-- Sales card -->
+          <md-card-title fxLayout.gt-xs="row" fxLayout="column">
+            <div class="graph-item-title" fxFlex>Your Sales</div>
+            <md-chip-list>
+              <div class="mat-chip dropdown-chip">
+                <span fxFlex>
+                  <span class="dropdown-chip-title">Period: </span>
+                  <span>Last Year</span>
+                </span>
+                <i class="material-icons dropdown-chip-arrow">expand_more</i>
+              </div>
+            </md-chip-list>
+          </md-card-title>
+          <md-card-content>
+            <img src="../assets/graphs/sales.png" class="sales-graph" />
+          </md-card-content>
+        </md-card>
+
+        <!-- Report card -->
+        <md-card class="report-item mat-elevation-z0">
+          <md-card-title fxLayout="row" fxLayout.xs="column">
+            <div class="graph-item-title" fxFlex>Report</div>
+            <md-chip-list>
+              <div class="mat-chip dropdown-chip">
+                <span fxFlex>
+                  <span class="dropdown-chip-title">Period: </span>
+                  <span>Last Year</span>
+                </span>
+                <i class="material-icons dropdown-chip-arrow">expand_more</i>
+              </div>
+            </md-chip-list>
+          </md-card-title>
+          <md-card-content>
+            <img src="../assets/graphs/report.png" class="report-graph"/>
+          </md-card-content>
+        </md-card>
+
+      </div>
+
+      <!-- Lists container -->
+      <div class="lists-container" fxLayout="row" fxLayout.lt-lg="column">
+
+        <!-- Tasks -->
+        <md-list class="home-list">
+
+          <div md-subheader fxLayout="row" class="home-list-subheader">
+            <h3 class="home-list-subheader-title" fxFlex>Tasks</h3>
+            <md-list-item class="list-item">
+              <div md-list-avatar class="list-letter-avatar">5</div>
+              <div md-list-avatar class="list-letter-avatar-delay">2</div>
+            </md-list-item>
+          </div>
+
+          <span *ngFor="let task of tasks">
+            <md-divider></md-divider>
+            <md-list-item class="list-item">
+              <span class="letter-avatar" fxHide.lt-sm>
+                <div md-list-avatar class="list-letter-avatar">{{task.desc.charAt(0)}}</div>
+              </span>
+              <span class="list-item-text" fxFlex>
+                <span class="task-list-item-desc">{{task.desc}}</span>
+
+                <div *ngIf="task.isDuePast; then thenBlock else elseBlock"></div>
+                <ng-template #thenBlock>
+                  <span class="task-list-item-due-date-past">
+                    <img src="../assets/icons/clock-delay.png" class="list-detail-icon" />
+                    {{' ' + task.daysFromDue}} days delays
+                  </span>
+                </ng-template>
+                <ng-template #elseBlock>
+                  <span class="task-list-item-due-date-valid">
+                    <img src="../assets/icons/clock-valid.png" class="list-detail-icon" />
+                    {{task.daysFromDue}} days left
+                  </span>
+                </ng-template>
+              </span>
+              <button md-icon-button>
+                <i class="material-icons default-list-icon">more_vert</i>
+              </button>
+            </md-list-item>
+          </span>
+
+        </md-list>
+
+        <!-- Messages -->
+        <md-list class="home-list">
+
+          <div md-subheader fxLayout="row" class="home-list-subheader">
+            <h3 class="home-list-subheader-title" fxFlex>Messages</h3>
+            <md-list-item class="list-item">
+              <div md-list-avatar class="list-letter-avatar">2</div>
+            </md-list-item>
+          </div>
+
+          <span *ngFor="let message of messages">
+            <md-divider></md-divider>
+            <md-list-item class="list-item {{message.isNew ? 'new-message' : ''}}">
+              <img md-list-avatar src="{{message.userAvatarSrc}}" fxHide.lt-sm>
+              <span class="list-item-text" fxFlex>
+                  <span class="message-list-name">{{message.username}}</span>
+                  <span class="message-list-time">
+                    {{message.isTimeAccurate ? '' : 'About '}}
+                    {{message.time + ' ' + message.timeFormat}} ago
+                  </span>
+                  <span class="message-list-content">{{message.content}}</span>
+                  <span class="message-list-icons">
+                    <img src="../assets/icons/back-arrow.png" href="#" class="list-detail-icon"/>
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                  </span>
+              </span>
+            </md-list-item>
+          </span>
+
+        </md-list>
+
+        <!-- Activity -->
+        <md-list class="home-list">
+
+          <div md-subheader fxLayout="row" class="home-list-subheader">
+            <h3 class="home-list-subheader-title" fxFlex>Activity</h3>
+            <md-list-item class="list-item">
+              <div md-list-avatar class="list-letter-avatar">10</div>
+            </md-list-item>
+          </div>
+          <md-divider></md-divider>
+
+          <span *ngFor="let action of activity">
+            <md-list-item class="list-item">
+              <img md-list-avatar src="{{action.userAvatarSrc}}" fxHide.lt-sm>
+              <span class="list-item-text" fxFlex>
+                <span class="activity-list-name">{{action.username}}</span>
+                <span class="activity-list-comment">
+                  {{action.actionType + ' ' + action.objectType}}
+                </span>
+                <span class="activity-list-name">
+                  {{action.objectName}}
+                </span>
+                <span class="activity-list-time-comment">
+                  <img src="../assets/icons/clock-valid.png" href="#" class="list-detail-icon"/>
+                  {{action.time + ' ' + action.timeFormat}} ago
+                </span>
+              </span>
+            </md-list-item>
+          </span>
+
+        </md-list>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</md-sidenav-container>
